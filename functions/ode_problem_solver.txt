@@ -1,0 +1,18 @@
+# Function to repeatedly solve an ode by stating the number of nodes
+# (here, 52 or 104), the function to solve f (ode52, ode104)
+# and the number of repetitions
+function ode_problem_solver(nnodes,f,repetitions,parameters)
+    solution = []
+    
+    for i in 1:repetitions
+    
+        prior = rand(Uniform(0,final_ic),nnodes)
+    
+        prob_dummy = ODEProblem(f,prior,tspan,parameters);
+
+        solution_dummy = solve(prob_dummy);
+
+        push!(solution,solution_dummy) 
+    end
+    return solution
+end;

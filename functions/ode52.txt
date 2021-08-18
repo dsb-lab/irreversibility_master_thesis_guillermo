@@ -1,0 +1,23 @@
+# Function to describe TF (nodes) connections:
+function ode52(x,p,t)
+    
+    xi = zeros(n_nodes) #52 factors
+    
+    for i in 1:n_nodes
+        xi[i] -= k*x[i]
+    end
+
+    #Sum over the different connections in the sparse matrix
+    for i in m52
+
+        # If i[3]==1, we have an activator:
+        if i[3] == 1
+            xi[i[2]] += a*x[i[1]]^n/(S^n + x[i[1]]^n)
+        # If i[3]==-1, we have a repressor:
+        else
+            xi[i[2]] += b*S^n/(S^n + x[i[1]]^n)
+        end
+    end
+
+    return xi
+end;

@@ -1,0 +1,177 @@
+m52=[
+# Oct4 to... (16 arrows)
+[1,8,1],  # ZFP42
+[1,10,1], # TDGF1
+[1,4,1],    # Oct4Sox2
+[1,32,1],  # FOXO1A
+[1,43,1],  # OCT4FOXD3
+[1,5,1],  # KLF4
+[1,14,-1],  # SOX17
+[1,6,1],  # FOXD3
+[1,15,-1],  # GATA4
+[1,16,-1], # GATA6
+[1,17,-1],  # T
+[1,21,-1],  # hCGb
+[1,20,-1],  # hCGa
+[1,46,1],  # PRDM14
+[1,33,-1],  # LEF1
+[1,22,-1],  # CDX2
+# SOX2 to... (11 arrows)
+[2,4,1],  # Oct4Sox2
+[2,10,1],  # TDFG1
+[2,32,1],  # FOXO1A
+[2,7,1],  # ZIC3
+[2,5,1],  # KLF4
+[2,6,1],  # FOXD3
+[2,24,-1],  # BMP2
+[2,42,1],  # NFYA
+[2,18,-1],  # GATA2
+[2,46,1],  # PRDM14
+[2,47,1],  # SALL4
+# NANOG to ... 24
+[3,3,1],  # NANOG
+[3,1,1],  # OCT4
+[3,47,1],  # SALL4
+[3,8,1],  # ZFP42
+[3,10,1],  # TDGF1
+[3,11,1],  # PBX1
+[3,32,1],  # FOXO1A
+[3,52,1],  # ZNF206
+[3,9,1],  # GDF3
+[3,2,1],  # SOX2
+[3,7,1],  # ZIC3
+[3,5,1],  # KLF4
+[3,6,1],  # FOXD3
+[3,15,-1],  # GATA4
+[3,24,-1],  # BMP2
+[3,50,1],  # SUMO1
+[3,18,-1],  # GATA2
+[3,19,-1],  # GATA3
+[3,17,-1],  # T
+[3,16,-1],  # GATA6
+[3,46,1],  # PRDM14
+[3,33,-1],  # LEF1
+[3,22,-1],  # CDX2
+[3,35,1],  # LMCD1
+# OCT4Sox2 to ... 3
+[4,2,1],  # SOX2
+[4,3,1],  # NANOG
+[4,1,1],  # OCT4
+# KLF4 to ... 1
+[5,3,1],  # NANOG
+# FOXD3 to ... 3
+[6,43,1],  # OCT4FOXD3
+[6,31,1],  # FOXA1
+[6,12,1],  # FOXA2
+# ZIC3 to ... 2
+[7,14,-1],  # SOX17
+[7,3,1],  # NANOG
+# ZFP42 to ... none
+# GDF3 to ... none
+# TDGF1 to ... none
+# PBX1 to ... 1
+[11,3,1],  # NANOG
+# FOXA2 to ... 2
+[12,12,1], # FOXA2
+[12,13,1], # AFP
+# AFP to ... none
+# SOX17 to ... 1
+[14,12,1],  # FOXA2
+# GATA4 to ... 1
+[15,16,-1], # GATA6
+# GATA6 to ... 3
+[16,16,1],  # GATA6
+[16,27,1],  # HNF4A
+[16,3,-1],  # NANOG
+# T to ... none
+# GATA2 to ... 1
+[18,20,1],  # hCGa
+# GATA3 to ... 1
+[19, 20,1],  # hCGa
+# hCGa to ... none
+# hCGb to ... none
+# CDX2 to ... 2
+[22,22,1],  # CDX2
+[22,1,-1],  # OCT4
+# bCAT to ... 2
+[23,34,1],  # LEF1bCAT
+[23,27,1],  # HNF4A
+# BMP2 to ... none
+# BMP2K to ... 1
+[25,24,1],  # BMP2
+# cAMP to ... 3
+[26,35,-1],  # LMCD1
+[26,20,1],  # hCGa
+[26,21,1],  # hCGb
+# HNF4A to ... 1
+[27,25,1],  # BMP2K
+# CEBP to ... 1
+[28,48,1],  # SP1
+# CSH1 to ... none
+# E2F4 to ... 9
+[30,39,1],  # MYC
+[30,17,-1],  # T
+[30,42,1],  # NFYA
+[30,6,1],  # FOXD3
+[30,50,1],  # SUMO1
+[30,44,1],  # PIAS1
+[30,28,-1],  # CEBP
+[30,51,1],  # TCF3
+[30,48,1],  # SP1
+# FOXA1 to ... 2
+[31,31,1],  # FOXA1
+[31,13,1],  # AFP
+# FOXO1A to ... none
+# LEF1 to ... 2
+[33,34,1],  # LEF1bCat
+[33,47,1],  # SALL4
+#LEF1bcat to ... 1
+[34,39,1],  # MYC
+# LMCD1 to 1
+[35,16,-1],  # GATA6
+# Mad to ... 1
+[36,37,1],  # MadMax
+# MadMax to ... none
+# MAX to ... 2
+[38,37,1],  # MadMax
+[38,40,1],  # MycMax
+# MYC to ... 2
+[39,40,1],  # MycMax
+[39,41,1],  # MYCSP1
+# MycMax to ... none
+# MYCSP1 to ... 1
+[41,48,-1],  # SP1
+# NFYA to ... 1
+[42,48,1],  # SP1
+# OCT4FOXD3 to ... 2
+[43,31,-1],  # FOXA1
+[43,12,-1],  # FOXA2
+# PIAS1 to ... 4
+[44,44,1],  # PIAS1
+[44,15,1],  # GATA4
+[44,45,1],  # PIASy
+[44,49,-1],  # SP3
+# PIASy to ... 1
+[45,18,-1],  # GATA2
+# PRDM14 to ... 4
+[46,29,-1],  # CSH1
+[46,16,-1],  # GATA6
+[46,17,-1],  # T
+[46,39,1],  # MYC
+# SALL4 to ... none
+# SP1 to ... 4
+[48,21,1],  # hCGb
+[48,48,1],  # SP1
+[48,28,-1],  # CEBP
+[48,41,1],  # MYCSP1
+# SP3 to ... 2
+[49,21,1],  # hCGb
+[49,48,-1],  # SP1
+# SUMO1 to ... 3
+[50,18,-1],  # GATA2
+[50,49,-1],  # SP3
+[50,15,1],  # GATA4
+# TCF3 to ... 1
+[51,39,-1],  #  MYC
+# ZNF206 to ... none
+];

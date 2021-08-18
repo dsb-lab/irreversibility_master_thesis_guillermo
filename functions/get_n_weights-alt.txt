@@ -1,0 +1,64 @@
+# Function to calculate n weights and final state:
+# Instead of giving the whole solution, pass only a vector of which
+# we want to know its clusters: example_clusters
+function get_n_weights_alt(example_clusters,reps,d_eps)
+    # Minimum distance between clusters: d_eps
+    
+    # From the solution, get the final points for each repetition:
+    #example_clusters = [sol[i][end][node] for i in 1:reps]
+    
+    # Get a list of lists with the distance between each point to all others
+    mat_dist = [abs.(example_clusters .- i) for i in example_clusters]
+    
+    # List of bools of those distances less than the threshold:
+    bool_before = mat_dist[1] .< d_eps
+    
+    # There's always at least one cluster:
+    count_clusters = 1
+    
+    # Save the first list of bools to compare later:
+    # if we see a bool vector different than this,
+    # then there is a new cluster:
+    bool_all = [bool_before]
+    
+    # List to save clusters (we'll do the mean later):
+    clusters = []
+    
+    # Save the first cluster:
+    push!(clusters,example_clusters[bool_before])
+    
+    # Run through all the comparisons of the matrix of distances:
+    for i in 2:length(mat_dist)
+        
+        # List of bools of those distances less than the threshold:
+        bool_now = mat_dist[i] .< d_eps
+        
+        # Save new list of bools to the whole list of bools:
+        push!(bool_all,bool_now)
+        
+        # if we see a bool vector for the first time,
+        # then we have found a new cluster:
+        if sum([all(bool_now .== bool_all[i]) for i in 1:length(bool_all)-1]) == 0
+            
+            count_clusters += 1
+            
+            push!(clusters,example_clusters[bool_now])
+            
+        end
+        
+        # update for next iteration:
+        bool_before = bool_now
+    end
+    
+    #println("total number of clusters = ", count_clusters)
+    
+    # Now we have the number of clusters and a list with all the clusters.
+    # We can find the weights:
+    weights = [length(clusters[i])/reps for i in 1:count_clusters]
+    # and the mean of each cluster (steady state):
+    steady_states = [mean(clusters[i]) for i in 1:count_clusters]
+
+    # Return: number of clusters, weights and mean of each cluster
+    return [count_clusters, weights, steady_states]
+    
+end; # ends function

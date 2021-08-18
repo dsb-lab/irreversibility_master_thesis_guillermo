@@ -1,0 +1,45 @@
+# Function to describe TF (nodes) connections:
+function ode104(x,p,t)
+    
+    xi = zeros(2*n_nodes) #52 factors
+    
+    
+    #####################
+    #  Solve for x:     #
+    #####################
+    for i in 1:n_nodes
+        xi[i] -= k*x[i]
+    end
+
+    #Sum over the different connections in the sparse matrix
+    for i in m52
+
+        # If i[3]==1, we have an activator:
+        if i[3] == 1
+            xi[i[2]] += a*x[i[1]]^n/(S^n + x[i[1]]^n)
+        # If i[3]==-1, we have a repressor:
+        else
+            xi[i[2]] += b*S^n/(S^n + x[i[1]]^n)
+        end
+        
+    end
+
+    #####################
+    #  Solve for sigma: #
+    #####################
+    
+    for i in 1:n_nodes
+        xi[i + n_nodes] += 2*(D - k*x[i + n_nodes])
+    end
+    
+    for i in m52
+        # Since for this network there is no self-inhibition
+        # we only consider the self-activating nodes:
+        if i[1] == i[2]
+            fraction = xi[i[1]]^(n-1)/(S^n+xi[i[1]]^n)^2
+            xi[i[1] + n_nodes] += 2*a*n*S^n*fraction* x[i[1] + n_nodes]
+        end
+    end
+    
+    return xi
+end;

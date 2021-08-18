@@ -1,0 +1,70 @@
+# Function to calculate weights and final state:
+function get_weights(node,solution)
+    # Set vector to save final points:
+    attractor_1 = []
+    attractor_2 = []
+    # We choose the first final value to compare with the rest of the final values
+    compare = solution[1][node,end]
+    
+    # Allow for an error:
+    eps = 1e-3
+    
+    # Initiate counters for each node:
+    w_1 = 0; w_2 = 0
+    
+    # Determine whether a repetition goes to one node or the other
+    for i in 1:repetitions
+        # If it is within the accepted values, count for one of the nodes:
+        
+        pos = solution[i][node,end]
+        
+        if pos < compare + eps &&  pos > compare - eps
+            w_1 += 1
+            push!(attractor_1,pos)
+        else
+            w_2 += 1
+            push!(attractor_2,pos)
+        end
+    end # ends for loop through repetitions
+    
+    # Normalize:
+    w_1 = w_1/repetitions
+    w_2 = w_2/repetitions
+    
+    # Control for empty attractors (in case of monostability):
+    if w_1 == 0
+        attractor_1 = NaN
+        max_attractor = attractor_1
+        min_attractor = mean(attractor_2)
+        w_max = w_1
+        w_min = w_2
+    elseif w_2 == 0
+        attractor_2 = NaN
+        max_attractor = attractor_2
+        min_attractor = mean(attractor_1)
+        
+        w_max = w_2
+        w_min = w_1
+    else
+        # Assign larger value to the first attractor and set the corresponding weight:
+        means_attractor = [mean(attractor_1),mean(attractor_2)]
+        if means_attractor[1] > means_attractor[2]
+            
+            max_attractor = means_attractor[1]
+            min_attractor = means_attractor[2]
+            w_max = w_1
+            w_min = w_2
+        else
+            max_attractor = means_attractor[2]
+            min_attractor = means_attractor[1]
+            w_max = w_2
+            w_min = w_1
+            
+        end # ends if of mean attractor
+
+    end # ends if of weights being 0
+    
+    # Return weights 1,2 and corresponding vectors of final states 1,2:
+    return [w_max,w_min,max_attractor,min_attractor]
+end # ends function
+;
